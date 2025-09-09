@@ -26,7 +26,14 @@ export default defineConfig({
           'react-router-dom': 'ReactRouterDOM',
           'lucide-react': 'LucideReact'
         },
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name === 'style.css') {
+            return 'local-auth-public.css';
+          }
+          return assetInfo.name;
+        },
       },
     },
+    cssCodeSplit: false,
   },
 });
