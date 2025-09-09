@@ -1,40 +1,60 @@
 /**
  * Local Auth Public Package
- * A simple test package for git repository installation testing
+ * A comprehensive authentication package with React components and services
  */
 
-export interface LocalAuthConfig {
-  apiUrl: string;
-  timeout?: number;
-}
+// Types
+export type { 
+  LoginRequest, 
+  LoginResponse, 
+  User, 
+  AuthContextType, 
+  UseAuthenticatedFetchOptions 
+} from './types/auth';
 
-/**
- * Initialize the local auth service
- */
-export function initializeLocalAuth(config: LocalAuthConfig): void {
-  console.log('Local Auth initialized with config:', config);
-}
+// Services
+export { authService } from './services/authService';
 
-/**
- * Test function to verify the package is working
- */
-export function testLocalAuth(): string {
-  return 'Local Auth Public package is working!';
-}
+// React Context
+export { AuthProvider, useAuth } from './contexts/AuthContext';
 
-/**
- * Get a default configuration
- */
-export function getDefaultConfig(): LocalAuthConfig {
-  return {
-    apiUrl: 'https://api.example.com',
-    timeout: 5000
-  };
+// React Components
+export { default as LoginPage } from './components/LoginPage';
+export { default as ProtectedRoute } from './components/ProtectedRoute';
+
+// React Hooks
+export { useAuthenticatedFetch, useApiData } from './hooks/useAuthenticatedFetch';
+
+// Import for default export
+import { authService } from './services/authService';
+import { AuthProvider, useAuth } from './contexts/AuthContext';
+import LoginPage from './components/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute';
+import { useAuthenticatedFetch, useApiData } from './hooks/useAuthenticatedFetch';
+
+
+// Create a proper type for the default export
+interface LocalAuthPublic {
+  // Auth functionality
+  AuthProvider: typeof AuthProvider;
+  useAuth: typeof useAuth;
+  authService: typeof authService;
+  LoginPage: typeof LoginPage;
+  ProtectedRoute: typeof ProtectedRoute;
+  useAuthenticatedFetch: typeof useAuthenticatedFetch;
+  useApiData: typeof useApiData;
 }
 
 // Default export
-export default {
-  initializeLocalAuth,
-  testLocalAuth,
-  getDefaultConfig
+const localAuthPublic: LocalAuthPublic = {
+  // Auth functionality
+  AuthProvider,
+  useAuth,
+  authService,
+  LoginPage,
+  ProtectedRoute,
+  useAuthenticatedFetch,
+  useApiData,
 };
+
+export default localAuthPublic;

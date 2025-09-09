@@ -16,9 +16,14 @@ export default defineConfig({
       fileName: (format) => `index.${format === 'es' ? 'mjs' : 'cjs'}`,
     },
     rollupOptions: {
-      external: [],
+      external: ['react', 'react-dom', 'react-router-dom', 'lucide-react'],
       output: {
-        globals: {},
+        globals: {
+          'react': 'React',
+          'react-dom': 'ReactDOM',
+          'react-router-dom': 'ReactRouterDOM',
+          'lucide-react': 'LucideReact'
+        },
       },
     },
   },
