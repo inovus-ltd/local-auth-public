@@ -1,5 +1,5 @@
 {
-  "name": "@inovus-ltd/local-auth-public",
+  "name": "org.inovus.local-auth",
   "version": "0.2.5",
   "type": "module",
   "main": "dist/index.cjs",

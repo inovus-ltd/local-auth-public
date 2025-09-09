@@ -1,1 +1,0 @@
-{"version":3,"file":"useAuthenticatedFetch.d.ts","sourceRoot":"","sources":["../../src/hooks/useAuthenticatedFetch.ts"],"names":[],"mappings":"AAGA,OAAO,EAAE,4BAA4B,EAAE,MAAM,eAAe,CAAC;AAoB7D,eAAO,MAAM,qBAAqB,GAAI,UAAS,4BAAiC;mCAMlE,MAAM,mBACA,WAAW,KAC1B,OAAO,CAAC,QAAQ,CAAC;CAarB,CAAC;AAGF,eAAO,MAAM,UAAU;;;CAiCtB,CAAC"}

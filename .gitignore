@@ -4,6 +4,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+dist/
+
 # Build outputs
 build/
 
@@ -13,6 +15,8 @@ build/
 .env.development.local
 .env.test.local
 .env.production.local
+
+.npmrc
 
 # IDE
 .vscode/
