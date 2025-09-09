@@ -19,13 +19,13 @@ class AuthService {
       // @ts-ignore - import.meta.env is available in Vite but not in TypeScript definitions
       if (typeof import.meta !== 'undefined' && import.meta.env) {
         // @ts-ignore
-        return import.meta.env.DEV ? '/api' : 'https://dev.totum.surgery/api';
+        return import.meta.env.DEV ? '/api' : 'https://sandbox.totum.surgery/api';
       }
     } catch (e) {
       // Ignore errors if import.meta is not available
     }
     // Fallback for non-Vite environments
-    return 'https://dev.totum.surgery/api';
+    return 'https://sandbox.totum.surgery/api';
   }
 
   /**
@@ -59,8 +59,7 @@ class AuthService {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
         },
-        // Add credentials if the API requires it
-        credentials: 'include',
+        // No credentials required
         body: JSON.stringify({ 
           login: email, 
           password 

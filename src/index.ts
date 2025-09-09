@@ -3,6 +3,9 @@
  * A comprehensive authentication package with React components and services
  */
 
+// Import Tailwind CSS styles
+import './styles.css';
+
 // Types
 export type { 
   LoginRequest, 

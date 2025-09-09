@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite';
 import dts from 'vite-plugin-dts';
+import tailwindcss from '@tailwindcss/vite';
 import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [
+    tailwindcss(),
     dts({
       insertTypesEntry: true,
     }),

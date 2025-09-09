@@ -209,7 +209,7 @@ interface AuthContextType {
 The package automatically detects development vs production environments:
 
 - **Development**: Uses `/api` as base URL (for proxy setup)
-- **Production**: Uses `https://dev.totum.surgery/api` as base URL
+- **Production**: Uses `https://sandbox.totum.surgery/api` as base URL
 
 ## Styling
 
