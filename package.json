@@ -1,6 +1,6 @@
 {
   "name": "@inovus-ltd/local-auth-public",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -17,6 +17,7 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "npm run build",
     "prepublishOnly": "npm run build && npm run verify",
     "build": "vite build",
     "verify": "npm pack --dry-run > npm-pack.txt",
