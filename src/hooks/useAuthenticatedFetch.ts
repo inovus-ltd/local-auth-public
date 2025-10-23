@@ -4,21 +4,12 @@ import { useAuth } from '../contexts/AuthContext';
 import { UseAuthenticatedFetchOptions } from '../types/auth';
 
 /**
- * Get default base URL based on environment
+ * Get default base URL - always use relative URL for proxy support
  */
 function getDefaultBaseUrl(): string {
-  // Check if we're in a Vite environment
-  try {
-    // @ts-ignore - import.meta.env is available in Vite but not in TypeScript definitions
-    if (typeof import.meta !== 'undefined' && import.meta.env) {
-      // @ts-ignore
-      return import.meta.env.DEV ? '/api' : 'https://sandbox.totum.surgery/api';
-    }
-  } catch (e) {
-    // Ignore errors if import.meta is not available
-  }
-  // Fallback for non-Vite environments
-  return 'https://sandbox.totum.surgery/api';
+  // For non-Vite environments, still use relative URL
+  // The parent app should handle routing via proxy or server configuration
+  return "/api";
 }
 
 export const useAuthenticatedFetch = (options: UseAuthenticatedFetchOptions = {}) => {

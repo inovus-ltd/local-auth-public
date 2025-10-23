@@ -70,7 +70,7 @@ function MyComponent() {
   const { authenticatedFetch } = useAuthenticatedFetch();
 
   const fetchData = async () => {
-    const response = await authenticatedFetch('/api/data');
+    const response = await authenticatedFetch('/data'); // Note: no '/api' prefix needed
     return response.json();
   };
 
@@ -134,15 +134,15 @@ const {
 ```
 
 #### `useAuthenticatedFetch(options?)`
-Hook for making authenticated API requests.
+Hook for making authenticated API requests. Uses `/api` as the default base URL.
 
 ```tsx
 const { authenticatedFetch } = useAuthenticatedFetch({
-  baseUrl: 'https://api.example.com' // Optional
+  baseUrl: '/api' // Optional, defaults to '/api'
 });
 
 // Usage
-const response = await authenticatedFetch('/api/endpoint', {
+const response = await authenticatedFetch('/endpoint', {
   method: 'POST',
   body: JSON.stringify(data)
 });
@@ -206,10 +206,47 @@ interface AuthContextType {
 
 ## Configuration
 
-The package automatically detects development vs production environments:
+The package uses relative URLs (`/api`) for maximum flexibility. Parent applications must configure their development server or proxy to handle API routing.
 
-- **Development**: Uses `/api` as base URL (for proxy setup)
-- **Production**: Uses `https://sandbox.totum.surgery/api` as base URL
+### Vite Configuration
+
+For Vite-based applications, configure the proxy in your `vite.config.js`:
+
+```javascript
+// vite.config.js
+export default {
+  server: {
+    proxy: {
+      "/api": {
+        target: "https://sandbox.totum.surgery", // or dev.totum.surgery, staging.totum.surgery
+        changeOrigin: true,
+        secure: true,
+        rewrite: (path) => path.replace(/^\/api/, "/api"),
+      },
+    },
+  },
+};
+```
+
+### Environment-Specific Configuration
+
+You can configure different environments by changing the proxy target:
+
+```javascript
+// Example
+target: "https://example.totum.surgery"
+
+### Non-Vite Applications
+
+For applications not using Vite, configure your development server to proxy `/api` requests to the appropriate backend environment.
+
+## Benefits of Relative URL Approach
+
+✅ **Environment Flexibility**: Parent apps control which backend environment to use  
+✅ **No Hardcoded URLs**: The npm module doesn't contain environment-specific URLs  
+✅ **Easy Configuration**: Simple proxy setup handles all environment switching  
+✅ **Development Friendly**: Works seamlessly with Vite's proxy system  
+✅ **Production Ready**: Parent apps can configure their production servers as needed
 
 ## Styling
 

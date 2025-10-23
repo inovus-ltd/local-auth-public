@@ -1,6 +1,6 @@
 {
   "name": "org.inovus.local-auth",
-  "version": "0.2.5",
+  "version": "0.4.0",
   "type": "module",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
@@ -11,14 +11,12 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.cjs"
     },
-    "./dist/local-auth-public.css": "./dist/local-auth-public.css"
+    "./dist/org.inovus.local-auth.css": "./dist/org.inovus.local-auth.css"
   },
   "files": [
     "dist"
   ],
   "scripts": {
-    "prepare": "npm run build",
-    "postinstall": "npm run build",
     "prepublishOnly": "npm run build && npm run verify",
     "build": "vite build",
     "verify": "npm pack --dry-run > npm-pack.txt",
